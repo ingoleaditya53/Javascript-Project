@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
+    <style>
+        .container{
+            margin-left: 100px;
+            margin-top: 20px;
+            border: 2px solid black;
+            padding: 10px;
+            width: 50%;
+        }
+    </style>
+    <script>
+        userDetails = {
+            CardNumber: "44556677883322",
+            CVV: "2345",
+            Expiry: "2025"
+        }
+         function PayClick() {
+         var card = document.getElementById("txtCard").value;
+         var cvv = document.getElementById("txtCvv").value;
+         var expiry = document.getElementById("lstExpiry").value;
+         var msg = document.getElementById("msg");
+         if (card == userDetails.CardNumber && cvv == userDetails.CVV && expiry == userDetails.Expiry) {
+            document.getElementById("msg").innerHTML="Payment Successful".fontcolor('green')
+    } else {
+       document.getElementById("msg").innerHTML="Invalid Detalis".fontcolor('red');
+    }
+}
+
+       
+    </script>
+</head>
+<body>
+     <div class="container">
+        <h2>Payment Details</h2>
+        <dl>
+            <dt>Card Number</dt>
+            <dd><input type="text" id="txtCard"></dd>
+            <dt>CVV</dt>
+            <dd><input type="text" id="txtCvv" size="4"></dd>
+            <dt>Expiry</dt>
+            <dd>
+                <select id="lstExpiry">
+                    <option>2024</option> 
+                    <option>2025</option>
+                    <option>2026</option>
+                </select>
+            </dd>
+        </dl>
+        <div>
+            <button id="btnPay" onclick="PayClick()">Pay</button>
+            <h1 id="msg"></h1>
+        </div>
+    </div>
+</body>
+</html>
