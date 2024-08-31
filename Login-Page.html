@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- Bootstrap CDN -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <script>
+        var Userdetails = {
+            Email: "ram123@gmail.com",
+            Mobile: "87484848848",
+            Password: "ram@123"
+        };
+        var flag = "";
+
+        function ContinueClick() {
+            var user = document.getElementById("txtUser").value;
+            var userError = document.getElementById("UserError");
+            var UserContainer = document.getElementById("UserContainer");
+            var PasswordContainer = document.getElementById("PasswordContainer");
+
+            if (user == Userdetails.Email || user == Userdetails.Mobile) {
+                flag = `Login Success and Notification sent to ${user}`;
+                UserContainer.style.display = "none";
+                PasswordContainer.style.display = "block";
+            } else {
+                userError.innerHTML = "Invalid email or Mobile No";
+            }
+        }
+
+        function LoginClick() {
+            var password = document.getElementById("txtPwd").value;
+            var PwdError = document.getElementById("PwdError")
+            if (password == Userdetails.Password) {
+                document.write(`${flag}`)
+            } else {
+                PwdError.innerHTML = "Invalid Password";
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="container d-flex justify-content-center align-items-center vh-100">
+        <div class="border p-4" style="width: 30%;">
+            <h2>Sign In</h2>
+            <div id="UserContainer">
+                <dl>
+                    <dd class="font-weight-bold">Email or Mobile Number</dd>
+                    <dd><input type="text" id="txtUser" class="form-control"></dd>
+                    <div id="UserError" class="text-danger"></div>
+                </dl>
+                <button class="btn btn-danger btn-block" onclick="ContinueClick()">Continue</button>
+            </div>
+            <div id="PasswordContainer" style="display: none;">
+                <dd class="font-weight-bold mt-3">Your Password</dd>
+                <dd><input type="password" id="txtPwd" class="form-control"></dd>
+                <div id="PwdError" class="text-danger"></div>
+                <button class="btn btn-success btn-block mt-3" onclick="LoginClick()">Login</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
